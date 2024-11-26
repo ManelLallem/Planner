@@ -232,12 +232,39 @@ const DailyTasks = ({ id, date, title }) => {
           </div>
           <div className="form-group">
             <label>Event Color</label>
-            <input
-              type="color"
-              name="color"
-              value={form.color}
-              onChange={handleInputChange}
-            />
+            <div className="color-options">
+    {[
+      "#FFB3BA", // Pink
+      "#FFDFBA", // Peach
+      "#FFFFBA", // Yellow
+      "#BAFFC9", // Mint
+      "#BAE1FF", // Blue
+      "#E6B3FF", // Lavender
+      "#CBA1FF", // Lilac
+      "#FFD1DC", // Light Rose
+    ].map((color) => (
+      <label key={color} className="color-option">
+        <input
+          type="radio"
+          name="color"
+          value={color}
+          checked={form.color === color}
+          onChange={handleInputChange}
+        />
+        <span
+          style={{
+            display: "inline-block",
+            width: "24px",
+            height: "24px",
+            backgroundColor: color,
+            borderRadius: "50%",
+            border: "1px solid #ccc",
+            margin: "0 5px",
+          }}
+        ></span>
+      </label>
+    ))}
+  </div>
           </div>
           <button type="submit">
             {selectedEventIndex !== null ? "Update" : "Add Event"}

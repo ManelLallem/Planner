@@ -47,7 +47,7 @@ function Planner() {
       case 1:
         return <Calendar id={userId}/>;
       default:
-        return <Today/>;
+        return <p>upcoming feature</p>;
     }}
 
 
