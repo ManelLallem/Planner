@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Playwrite+AR:wght@100..400&family=Playwrite+HR:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+margin: 0;
+padding: 0;
+font-family: 'Poppins', sans-serif;
+
+}
+img{
+    width: 100%;
+}
+#planner{
+    display: flex;
+    width: 100%;
+}
+section{
+    width: 20%;
+}
+#sidebar{
+    background-color: #f8f8ff;
+    padding: 20px;
+    padding-right: 10px;
+    height: 1fr;
+
+}
+#profile{
+    display: flex;
+    align-items:center;
+    column-gap: 10px;
+}
+h2{
+    font-size: 18px;
+}
+#date{
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+#profilePic{
+    background-color: blue;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    position:static;
+}
+#username{
+    font-weight: 600;
+    white-space: nowrap; /* Prevent the username from wrapping to a new line */
+    overflow: hidden; /* Hide the overflow text */
+    text-overflow: ellipsis; /* Add "..." when the username is too long */
+    max-width: 130px; /* Set a max width to control text length */
+    flex-shrink: 0; /* Prevent the username from shrinking */
+}
+#moreOptions{
+    margin-left: auto;
+    display: flex;
+}
+#dot-btn{
+    width:16px ;
+    align-self: center;
+    padding-top: 5px;
+    padding-bottom: 1px;
+    border-radius: 6px;
+}
+#dot-btn:hover{
+    background-color:#d9ddf3;
+    cursor: pointer;
+}
+
+
+#date{
+    font-weight: 400;
+}
+.option{
+    padding: 5px 8px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    font-size: 17px;
+}
+.option:hover{
+    background-color: #d9ddf3;
+    color: rgb(27, 26, 135);
+    cursor: pointer;
+}
+.option-selected{
+    background-color: #d9ddf3;
+    color: rgb(27, 26, 135);
+}
+#content{
+    flex: 1;
+}

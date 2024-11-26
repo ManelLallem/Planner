@@ -1,0 +1,82 @@
+.calendar {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+  align-items: center;
+  padding: 10px;
+  background-color: #3d3bf3;
+  color: white;
+}
+
+.calendar-header h2 {
+  margin: 0;
+  width: 150px;
+  text-align: center;
+}
+
+.calendar-header button {
+  background-color: #f3a93d;
+  color: white;
+  border: none;
+  padding: 2px 5px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 5px;
+}
+
+.calendar-header button:hover {
+  cursor: pointer;
+}
+
+.calendar-body {
+  padding: 10px;
+}
+
+.days-of-week,
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.day-name,
+.day {
+  text-align: center;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.day {
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.day:hover {
+  cursor: pointer;
+  background-color: #f3a93d;
+  color: white;
+  
+}
+
+.day.today {
+  border: 2px solid black;
+  font-weight: bold;
+}
+.day.today:hover{border: 1px solid #ddd;}
+
+.day.empty {
+  background-color: #f9f9f9;
+  border: none;
+}
