@@ -133,4 +133,20 @@ exports.addTask = async (req, res) => {
       return res.status(500).json({ error: "An error occurred while updating the task." });
     }
   };
+  exports.deleteTask = async (req, res) => {
+    const { taskId } = req.body;
+  
+    if (!taskId) {
+      return res.status(400).json({ error: "Task ID is required." });
+    }
+  
+    try {
+      await Planner.findByIdAndDelete(taskId); 
+      res.status(200).json({ message: "Task deleted successfully." });
+    } catch (error) {
+      console.error("Error deleting task:", error);
+      res.status(500).json({ error: "Failed to delete task. Please try again." });
+    }
+  };
+  
   

@@ -99,11 +99,7 @@ padding: 3px;}
     position: relative;
     flex: 1;
     padding-left: 50px;
-  }
-  .event:hover{
-    cursor: pointer;
-  }
-  
+  }  
   .event {
     position: absolute;
     left: 0;
@@ -157,3 +153,27 @@ padding: 3px;}
   .grid-container input:hover {
     cursor: pointer;
   }
+  .edit,.delete{
+    height: 20px;
+    width: 20px;
+
+  }
+  .edit, .delete:hover{
+    cursor: pointer;
+  }
+  .event-row{
+    display: flex;
+    column-gap: 15px;
+    margin: 5px;
+    align-items: flex-end;
+ 
+  }
+  .edit-delete{
+    display: flex;
+    column-gap: 5px;
+    margin-left: auto;
+    margin-right: 15px;
+    align-items: flex-end;
+ 
+  }
+ 

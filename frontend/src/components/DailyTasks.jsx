@@ -18,7 +18,7 @@ const DailyTasks = ({ id, date, title }) => {
   const [selectedEventIndex, setSelectedEventIndex] = useState(null);
   const [events, setEvents] = useState([]); // We'll keep this state to display the events but won't store the full events locally.
 
-  // Fetch tasks for the given userId and taskDate
+  
   const fetchTasks = async () => {
     try {
       const response = await axios.get("http://localhost:7010/api/planner/getTasks", {
@@ -31,7 +31,7 @@ const DailyTasks = ({ id, date, title }) => {
   };
   useEffect(() => {
     fetchTasks(); // Fetch tasks when the component loads
-  }, [id, date]); // Re-fetch if `id` or `date` changes
+  }, [id, date]); 
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -148,6 +148,18 @@ const DailyTasks = ({ id, date, title }) => {
     setSelectedEventIndex(index);
     setDisplayFlag(false);
   };
+  const handleDeleteTask = async (taskId) => {
+    try {
+      await axios.delete("http://localhost:7010/api/planner/deleteTask", {
+        data: { taskId }, 
+      });
+      fetchTasks();
+    } catch (error) {
+      console.error("Error deleting task:", error);
+      alert("Failed to delete the task. Please try again.");
+    }
+  };
+  
 
   return (
     <div className="day-view-container">
@@ -261,7 +273,6 @@ const DailyTasks = ({ id, date, title }) => {
               <div
                 key={index}
                 className="event"
-                onClick={() => handleEventClick(index)}
                 style={{
                   top: `calc(${calculateTop(event.startTime)} + 7px)`,
                   height: `calc(${calculateHeight(event.startTime, event.endTime)})`,
@@ -269,10 +280,8 @@ const DailyTasks = ({ id, date, title }) => {
                   borderColor: event.highPriority ? "red" : event.color,
                 }}
               >
+                <div className="event-row">
                 <div className="event-name">{event.name}</div>
-                {event.location && (
-                  <div className="event-location">{event.location}</div>
-                )}
                 {event.tags && event.tags.length > 0 && (
                   <div className="event-tags">
                     {event.tags.map((tag, i) => (
@@ -282,6 +291,16 @@ const DailyTasks = ({ id, date, title }) => {
                     ))}
                   </div>
                 )}
+                <div className="edit-delete">
+                <div className="edit" onClick={() => handleEventClick(index)}><img src="edit.png" alt="" /></div>
+                <div className="delete" onClick={() => handleDeleteTask(event._id)}><img src="delete.png" alt="" /></div>
+                </div>
+
+                </div>
+                {event.location && (
+                  <div className="event-location" style={{ marginLeft: 5 }}>{event.location}</div>
+                )}
+
               </div>
             ))}
           </div>
