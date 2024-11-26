@@ -47,7 +47,7 @@ function Planner() {
       case 1:
         return <Calendar id={userId}/>;
       default:
-        return <p>upcoming feature</p>;
+        return <p>Upcoming </p>;
     }}
 
 
@@ -69,7 +69,8 @@ function Planner() {
         <h2 className="user" id="date">
           {date.toDateString()}
         </h2>
-        {options.map((option,index)=>(<p key={index} onClick={()=>setSelected(index)} className={`option ${selected=== index ? "option-selected" : ""}` }>{option}</p>))}
+        {options.map((option,index)=>(<p key={index} onClick={()=>setSelected(index)} className={`option ${selected=== index ? "option-selected" : ""}` }>{option}</p>)) //problem when clicking on calendar does not go back to it 
+        } 
       </section>
       <section id="content">
       {renderContent()} 

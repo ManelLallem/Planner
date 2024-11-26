@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './Signup.css';
+import { useNavigate } from 'react-router-dom'; 
 
 function Signup() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -16,8 +19,8 @@ function Signup() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
- const handleSubmit = async (e) => {
-     e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     // Check if passwords match and meet length requirement
     if (form.password.length < 8) {
@@ -47,55 +50,64 @@ function Signup() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        name="firstName"
-        onChange={handleChange}
-        placeholder="First Name"
-        value={form.firstName}
-        required
-      />
-      <input
-        name="lastName"
-        onChange={handleChange}
-        placeholder="Last Name"
-        value={form.lastName}
-        required
-      />
-      <input
-        name="username"
-        onChange={handleChange}
-        placeholder="Username"
-        value={form.username}
-        required
-      />
-      <input
-        name="email"
-        type="email"
-        onChange={handleChange}
-        placeholder="Email"
-        value={form.email}
-        required
-      />
-      <input
-        name="password"
-        type="password"
-        onChange={handleChange}
-        placeholder="Create Password"
-        value={form.password}
-        required
-      />
-      <input
-        name="confirmPassword"
-        type="password"
-        onChange={handleChange}
-        placeholder="Confirm Password"
-        value={form.confirmPassword}
-        required
-      />
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <button type="submit">Sign Up</button>
-    </form>
+    <div className="signup-container">
+      <h2 className='createAccount'>Create an Account</h2>
+      <form onSubmit={handleSubmit} className="signup-form">
+        <input
+          name="firstName"
+          onChange={handleChange}
+          placeholder="First Name"
+          value={form.firstName}
+          required
+          className="input-field"
+        />
+        <input
+          name="lastName"
+          onChange={handleChange}
+          placeholder="Last Name"
+          value={form.lastName}
+          required
+          className="input-field"
+        />
+        <input
+          name="username"
+          onChange={handleChange}
+          placeholder="Username"
+          value={form.username}
+          required
+          className="input-field"
+        />
+        <input
+          name="email"
+          type="email"
+          onChange={handleChange}
+          placeholder="Email"
+          value={form.email}
+          required
+          className="input-field"
+        />
+        <input
+          name="password"
+          type="password"
+          onChange={handleChange}
+          placeholder="Create Password"
+          value={form.password}
+          required
+          className="input-field"
+        />
+        <input
+          name="confirmPassword"
+          type="password"
+          onChange={handleChange}
+          placeholder="Confirm Password"
+          value={form.confirmPassword}
+          required
+          className="input-field"
+        />
+        {error && <p className="error-message">{error}</p>}
+        <button type="submit" className="signup-btn" onClick={()=>navigate('/')}>Sign Up</button>
+      </form>
+    </div>
   );
 }
 
